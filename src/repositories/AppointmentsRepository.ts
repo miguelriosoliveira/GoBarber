@@ -14,10 +14,8 @@ class AppointmentsRepository {
 		this.appointments = [];
 	}
 
-	public create({ provider, date }: AppointmentProps): Appointment {
-		const appointment = new Appointment({ provider, date });
-		this.appointments.push(appointment);
-		return appointment;
+	public all(): Appointment[] {
+		return this.appointments;
 	}
 
 	public findByDate(date: Date): Appointment | null {
@@ -25,8 +23,10 @@ class AppointmentsRepository {
 		return appointmentFound || null;
 	}
 
-	public all(): Appointment[] {
-		return this.appointments;
+	public create({ provider, date }: AppointmentProps): Appointment {
+		const appointment = new Appointment({ provider, date });
+		this.appointments.push(appointment);
+		return appointment;
 	}
 }
 
