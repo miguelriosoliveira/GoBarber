@@ -24,6 +24,10 @@ class AppointmentsRepository {
 		const appointmentFound = this.appointments.find(appointment => isEqual(date, appointment.date));
 		return appointmentFound || null;
 	}
+
+	public all(): Appointment[] {
+		return this.appointments;
+	}
 }
 
 export default AppointmentsRepository;
