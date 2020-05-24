@@ -7,11 +7,14 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "tsc",
-		"dev:server": "ts-node-dev src/server.ts --transpileOnly --ignore-watch node_modules --inspect"
+		"dev:server": "ts-node-dev src/server.ts --transpileOnly --ignore-watch node_modules --inspect",
+		"typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
 	},
 	"dependencies": {
 		"date-fns": "^2.14.0",
 		"express": "^4.17.1",
+		"pg": "^8.2.1",
+		"typeorm": "^0.2.25",
 		"uuidv4": "^6.0.9"
 	},
 	"devDependencies": {

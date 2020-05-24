@@ -20,6 +20,7 @@
 	},
 	"plugins": ["@typescript-eslint", "prettier", "eslint-plugin-import-helpers"],
 	"rules": {
+		"class-methods-use-this": "off",
 		"import/extensions": ["error", "ignorePackages", { "ts": "never" }],
 		"import-helpers/order-imports": [
 			"error",
