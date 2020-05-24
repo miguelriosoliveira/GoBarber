@@ -3,6 +3,7 @@ import { sign } from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
 
 import authConfig from '../config/auth';
+import AppError from '../errors/AppError';
 import User from '../models/User';
 
 interface Request {
@@ -21,12 +22,12 @@ class AuthenticateUserService {
 
 		const user = await usersRepository.findOne({ where: { email } });
 		if (!user) {
-			throw new Error('Incorrect email/password combination');
+			throw new AppError('Incorrect email/password combination', 401);
 		}
 
 		const passwordMatch = await compare(password, user.password);
 		if (!passwordMatch) {
-			throw new Error('Incorrect email/password combination');
+			throw new AppError('Incorrect email/password combination', 401);
 		}
 
 		const { secret, expiresIn } = authConfig.jwt;
