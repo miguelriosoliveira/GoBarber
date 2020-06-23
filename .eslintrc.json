@@ -29,7 +29,15 @@
 			"error",
 			{
 				"newlinesBetween": "always",
-				"groups": ["module", "parent", "sibling", "index"],
+				"groups": [
+					"module",
+					"/^@shared/",
+					"/^@config/",
+					"/^@modules/",
+					"parent",
+					"sibling",
+					"index"
+				],
 				"alphabetize": { "order": "asc", "ignoreCase": true }
 			}
 		],
