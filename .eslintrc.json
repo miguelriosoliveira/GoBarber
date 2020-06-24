@@ -24,6 +24,14 @@
 		"class-methods-use-this": "off",
 
 		"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
+		"@typescript-eslint/naming-convention": [
+			"error",
+			{
+				"selector": "interface",
+				"format": ["PascalCase"],
+				"prefix": ["I"]
+			}
+		],
 		"import/extensions": ["error", "ignorePackages", { "ts": "never" }],
 		"import-helpers/order-imports": [
 			"error",
