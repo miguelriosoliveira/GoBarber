@@ -1,3 +1,5 @@
+import { startOfHour } from 'date-fns';
+
 import AppError from '@shared/errors/AppError';
 
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
@@ -9,13 +11,15 @@ describe('CreateAppointment', () => {
 		const fakeAppointmentsRepository = new FakeAppointmentsRepository();
 		const createAppointment = new CreateAppointmentService(fakeAppointmentsRepository);
 
+		const date = new Date();
 		const provider_id = '123456';
 		const appointment = await createAppointment.execute({
-			date: new Date(),
+			date,
 			provider_id,
 		});
 
 		expect(appointment).toHaveProperty('id');
+		expect(appointment.date).toStrictEqual(startOfHour(date));
 		expect(appointment.provider_id).toBe(provider_id);
 	});
 
