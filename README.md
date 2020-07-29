@@ -3,7 +3,7 @@
 **RF**
 
 - O usuário deve poder recuperar sua senha informando seu e-mail;
-- O usuário deve receber um e-mail co instruções de recuperação de senha;
+- O usuário deve receber um e-mail com instruções de recuperação de senha;
 - O usuário deve poder resetar sua senha;
 
 **RNF**
