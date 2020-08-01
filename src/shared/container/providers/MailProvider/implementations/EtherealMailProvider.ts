@@ -37,12 +37,10 @@ export default class EtherealMailProvider implements IMailProvider {
 				address: to.email,
 			},
 			subject,
-			// text: 'test',
 			html: await this.mailTemplateProvider.parse(templateData),
 		});
 
 		console.log('Message sent: %s', message.messageId);
-		// Preview only available when sending through an Ethereal account
 		console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
 	}
 }
