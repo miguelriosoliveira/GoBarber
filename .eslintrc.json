@@ -71,8 +71,12 @@
 					"ignoreCase": true
 				}
 			}
-		],
-		"prettier/prettier": "error"
+		]
+		// "prettier/prettier": "error",
+		// "object-curly-spacing": [
+		// 	"error",
+		// 	"always"
+		// ]
 	},
 	"settings": {
 		"import/resolver": {
