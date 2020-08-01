@@ -1,8 +1,8 @@
 import FakeStorageProvider from '@shared/container/providers/StorageProvider/fakes/FakeStorageProvider';
 import AppError from '@shared/errors/AppError';
 
-import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
-import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
+import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
+import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 
 import CreateUserService from './CreateUserService';
 import UpdateUserAvatarService from './UpdateUserAvatarService';
