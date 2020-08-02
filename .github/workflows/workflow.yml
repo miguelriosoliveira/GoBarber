@@ -22,13 +22,10 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    - name: Cache multiple paths
+    - name: Cache node_modules
       uses: actions/cache@v2
       with:
-        path: |
-          ~/cache
-          !~/cache/exclude
-          **/node_modules
+        path: node_modules
         key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
 
     - name: Install dependencies and run tests
