@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/miguelriosoliveira/gobarber-backend/badge.svg?branch=master)](https://coveralls.io/github/miguelriosoliveira/gobarber-backend?branch=master)
+
 # Recuperação de senha
 
 **RF**
