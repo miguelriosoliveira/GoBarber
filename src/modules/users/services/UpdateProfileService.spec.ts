@@ -125,4 +125,16 @@ describe('UpdateProfile', () => {
 			}),
 		).rejects.toBeInstanceOf(AppError);
 	});
+
+	it('should not allow to update the password with wrong old password', async () => {
+		await expect(
+			updateProfile.execute({
+				user_id: 'wrong-id',
+				name: 'Miguel Rios',
+				email: 'miguel@rios.com',
+				old_password: 'old-password',
+				password: 'new-password',
+			}),
+		).rejects.toBeInstanceOf(AppError);
+	});
 });
