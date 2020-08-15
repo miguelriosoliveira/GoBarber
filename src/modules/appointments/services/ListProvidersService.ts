@@ -8,11 +8,10 @@ export default class ListProvidersService {
 	constructor(
 		@inject('UsersRepository')
 		private usersRepository: IUsersRepository,
-	) { }
+	) {}
 
 	public async execute(user_id: string): Promise<User[]> {
 		const providers = await this.usersRepository.findAllProviders({ except_user_id: user_id });
-
 		return providers;
 	}
 }
