@@ -19,7 +19,7 @@ export default class ListProviderMonthAvailabityService {
 	constructor(
 		@inject('AppointmentsRepository')
 		private appointmentsRepository: IAppointmentsRepository,
-	) { }
+	) {}
 
 	public async execute({ provider_id, month, year }: IRequest): Promise<IResponse> {
 		const appointments = await this.appointmentsRepository.findAllInMonthFromProvider({
@@ -37,9 +37,16 @@ export default class ListProviderMonthAvailabityService {
 			(value, index) => index + 1,
 		);
 
-		// return [{ day: 1, available: false }];
-		const appointmentDays = appointments.map(appointment => appointment.date.getDate());
+		const availability = eachDayArray.map(day => {
+			const appointmentsInDay = appointments.filter(appointment => {
+				return appointment.date.getDate() === day;
+			});
+			return {
+				day,
+				available: appointmentsInDay.length < 10,
+			};
+		});
 
-		return eachDayArray.map(day => ({ day, available: !appointmentDays.includes(day) }));
+		return availability;
 	}
 }
