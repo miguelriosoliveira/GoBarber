@@ -17,6 +17,7 @@ describe('ListProviderMonthAvailability', () => {
 		// test params
 
 		const provider_id = 'provider_id';
+		const user_id = 'user_id';
 		const day = 20;
 		const month = 5; // may
 		const year = 2020;
@@ -29,6 +30,7 @@ describe('ListProviderMonthAvailability', () => {
 			workingHours.map(hour => {
 				return fakeAppointmentsRepository.create({
 					provider_id,
+					user_id,
 					date: new Date(year, month - 1, day, hour),
 				});
 			}),
