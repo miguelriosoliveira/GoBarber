@@ -46,7 +46,7 @@ describe('ListProviderMonthAvailability', () => {
 
 		// assertions
 
-		expect(availability).toBe(
+		expect(availability).toStrictEqual(
 			expect.arrayContaining([
 				{ day: 19, available: true },
 				{ day: 20, available: false },
