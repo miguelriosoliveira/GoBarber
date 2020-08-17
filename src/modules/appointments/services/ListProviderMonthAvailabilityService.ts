@@ -37,13 +37,18 @@ export default class ListProviderMonthAvailabityService {
 			(value, index) => index + 1,
 		);
 
+		const currentDate = new Date(Date.now());
+
 		const availability = eachDayArray.map(day => {
 			const appointmentsInDay = appointments.filter(appointment => {
 				return appointment.date.getDate() === day;
 			});
+
+			const dayDate = new Date(year, month - 1, day);
+
 			return {
 				day,
-				available: appointmentsInDay.length < 10,
+				available: appointmentsInDay.length < 10 && dayDate >= currentDate,
 			};
 		});
 

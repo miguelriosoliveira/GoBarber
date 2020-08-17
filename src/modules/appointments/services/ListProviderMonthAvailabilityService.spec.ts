@@ -22,6 +22,10 @@ describe('ListProviderMonthAvailability', () => {
 		const month = 5; // may
 		const year = 2020;
 
+		jest.spyOn(Date, 'now').mockImplementationOnce(() => {
+			return new Date(year, month - 1, day).getTime();
+		});
+
 		// filling the day with appointments
 
 		const workingHours = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
@@ -44,9 +48,9 @@ describe('ListProviderMonthAvailability', () => {
 
 		expect(availability).toStrictEqual(
 			expect.arrayContaining([
-				{ day: 19, available: true },
-				{ day: 20, available: false },
-				{ day: 21, available: true },
+				{ day: 19, available: false }, // everyday before today is automatically not available
+				{ day: 20, available: false }, // today totally filled
+				{ day: 21, available: true }, // tomorow hasn't any appointments
 			]),
 		);
 	});
