@@ -1,5 +1,5 @@
 import { isEqual } from 'date-fns';
-import { uuid } from 'uuidv4';
+import * as uuid from 'uuid';
 
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
 import IFindAllInDayFromProviderDTO from '@modules/appointments/dtos/IFindAllInDayFromProviderDTO';
@@ -51,7 +51,7 @@ class FakeAppointmentsRepository implements IAppointmentsRepository {
 
 	public async create({ provider_id, user_id, date }: ICreateAppointmentDTO): Promise<Appointment> {
 		const appointment = new Appointment();
-		Object.assign(appointment, { id: uuid(), date, provider_id, user_id });
+		Object.assign(appointment, { id: uuid.v4(), date, provider_id, user_id });
 		this.appointments.push(appointment);
 		return appointment;
 	}
