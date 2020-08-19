@@ -13,7 +13,7 @@ interface IRequest {
 }
 
 @injectable()
-class SendForgotPasswordEmailService {
+export default class SendForgotPasswordEmailService {
 	constructor(
 		@inject('UsersRepository')
 		private usersRepository: IUsersRepository,
@@ -23,7 +23,7 @@ class SendForgotPasswordEmailService {
 
 		@inject('UserTokensRepository')
 		private userTokensRepository: IUserTokensRepository,
-	) { }
+	) {}
 
 	public async execute({ email }: IRequest): Promise<void> {
 		const user = await this.usersRepository.findByEmail(email);
@@ -42,11 +42,9 @@ class SendForgotPasswordEmailService {
 				templateFile: forgotPasswordTemplate,
 				variables: {
 					name: user.name,
-					link: `http://localhost:3000/reset_password?token=${token}`,
+					link: `${process.env.APP_WEB_URL}/reset_password?token=${token}`,
 				},
 			},
 		});
 	}
 }
-
-export default SendForgotPasswordEmailService;

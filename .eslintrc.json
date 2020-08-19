@@ -19,40 +19,21 @@
 		"ecmaVersion": 11,
 		"sourceType": "module"
 	},
-	"plugins": [
-		"@typescript-eslint",
-		"prettier",
-		"eslint-plugin-import-helpers"
-	],
+	"plugins": ["@typescript-eslint", "prettier", "eslint-plugin-import-helpers"],
 	"rules": {
 		"camelcase": "off",
 		"class-methods-use-this": "off",
 		"no-useless-constructor": "off",
-		"@typescript-eslint/no-unused-vars": [
-			"error",
-			{
-				"argsIgnorePattern": "_"
-			}
-		],
+		"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
 		"@typescript-eslint/naming-convention": [
 			"error",
 			{
 				"selector": "interface",
-				"format": [
-					"PascalCase"
-				],
-				"prefix": [
-					"I"
-				]
+				"format": ["PascalCase"],
+				"prefix": ["I"]
 			}
 		],
-		"import/extensions": [
-			"error",
-			"ignorePackages",
-			{
-				"ts": "never"
-			}
-		],
+		"import/extensions": ["error", "ignorePackages", { "ts": "never" }],
 		"import-helpers/order-imports": [
 			"error",
 			{
@@ -66,17 +47,10 @@
 					"sibling",
 					"index"
 				],
-				"alphabetize": {
-					"order": "asc",
-					"ignoreCase": true
-				}
+				"alphabetize": { "order": "asc", "ignoreCase": true }
 			}
-		]
-		// "prettier/prettier": "error",
-		// "object-curly-spacing": [
-		// 	"error",
-		// 	"always"
-		// ]
+		],
+		"prettier/prettier": "error"
 	},
 	"settings": {
 		"import/resolver": {
