@@ -1,8 +1,10 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
-const { pathsToModuleNameMapper } = require("ts-jest/utils");
-const { compilerOptions } = require("./tsconfig.json");
+const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { compilerOptions } = require('./tsconfig.json');
+
+require('dotenv/config');
 
 module.exports = {
 	// All imported modules in your tests should be mocked automatically
@@ -21,9 +23,7 @@ module.exports = {
 	collectCoverage: true,
 
 	// An array of glob patterns indicating a set of files for which coverage information should be collected
-	collectCoverageFrom: [
-		'<rootDir>/src/modules/**/services/*.ts'
-	],
+	collectCoverageFrom: ['<rootDir>/src/modules/**/services/*.ts'],
 
 	// The directory where Jest should output its coverage files
 	coverageDirectory: 'coverage',
@@ -37,10 +37,7 @@ module.exports = {
 	// coverageProvider: "babel",
 
 	// A list of reporter names that Jest uses when writing coverage reports
-	coverageReporters: [
-		"text-summary",
-		"lcov",
-	],
+	coverageReporters: ['text-summary', 'lcov'],
 
 	// An object that configures minimum threshold enforcement for coverage results
 	// coverageThreshold: undefined,
@@ -135,7 +132,7 @@ module.exports = {
 	// snapshotSerializers: [],
 
 	// The test environment that will be used for testing
-	testEnvironment: "node",
+	testEnvironment: 'node',
 
 	// Options that will be passed to the testEnvironment
 	// testEnvironmentOptions: {},
@@ -148,9 +145,7 @@ module.exports = {
 	//   "**/__tests__/**/*.[jt]s?(x)",
 	//   "**/?(*.)+(spec|test).[tj]s?(x)"
 	// ],
-	testMatch: [
-		"**/*.spec.ts"
-	],
+	testMatch: ['**/*.spec.ts'],
 
 	// An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
 	// testPathIgnorePatterns: [

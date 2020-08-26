@@ -1,9 +1,9 @@
 import { sign } from 'jsonwebtoken';
 import { injectable, inject } from 'tsyringe';
 
-import AppError from '@shared/errors/AppError';
-
 import authConfig from '@config/auth';
+
+import AppError from '@shared/errors/AppError';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
@@ -21,14 +21,14 @@ interface IResponse {
 }
 
 @injectable()
-class AuthenticateUserService {
+export default class AuthenticateUserService {
 	constructor(
 		@inject('UsersRepository')
 		private usersRepository: IUsersRepository,
 
 		@inject('HashProvider')
 		private hashProvider: IHashProvider,
-	) { }
+	) {}
 
 	public async execute({ email, password }: IRequest): Promise<IResponse> {
 		const user = await this.usersRepository.findByEmail(email);
@@ -47,5 +47,3 @@ class AuthenticateUserService {
 		return { user, token };
 	}
 }
-
-export default AuthenticateUserService;

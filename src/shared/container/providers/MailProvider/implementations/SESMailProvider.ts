@@ -17,7 +17,10 @@ export default class SESMailProvider implements IMailProvider {
 		private mailTemplateProvider: IMailTemplateProvider,
 	) {
 		this.client = createTransport({
-			SES: new aws.SES({ apiVersion: '2010-12-01' }),
+			SES: new aws.SES({
+				apiVersion: '2010-12-01',
+				region: process.env.AWS_DEFAULT_REGION,
+			}),
 		});
 	}
 

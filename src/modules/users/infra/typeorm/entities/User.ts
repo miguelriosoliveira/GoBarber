@@ -7,6 +7,8 @@ import {
 	UpdateDateColumn,
 } from 'typeorm';
 
+import storageConfig from '@config/storage';
+
 @Entity('users')
 export default class User {
 	@PrimaryGeneratedColumn('uuid')
@@ -33,6 +35,15 @@ export default class User {
 
 	@Expose({ name: 'avatar_url' })
 	getAvatarUrl(): string | null {
-		return this.avatar ? `${process.env.APP_API_URL}/files/${this.avatar}` : null;
+		if (!this.avatar) {
+			return null;
+		}
+
+		const urlByDriver = {
+			disk: `${process.env.APP_API_URL}/files/${this.avatar}`,
+			s3: `https://${storageConfig.config.s3.bucket}.s3.amazonaws.com/${this.avatar}`,
+		};
+
+		return urlByDriver[storageConfig.driver] || null;
 	}
 }

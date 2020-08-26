@@ -22,7 +22,7 @@ export default class UpdateProfileService {
 
 		@inject('HashProvider')
 		private hashProvider: IHashProvider,
-	) { }
+	) {}
 
 	public async execute({ user_id, name, email, old_password, password }: IRequest): Promise<User> {
 		const user = await this.usersRepository.findById(user_id);

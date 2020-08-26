@@ -1,11 +1,7 @@
-import fs from 'fs';
-import path from 'path';
 import { injectable, inject } from 'tsyringe';
 
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
 import AppError from '@shared/errors/AppError';
-
-import uploadConfig from '@config/upload';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
@@ -23,7 +19,7 @@ class UpdateUserAvatarService {
 
 		@inject('StorageProvider')
 		private storageProvider: IStorageProvider,
-	) { }
+	) {}
 
 	public async execute({ userId, avatarFilename }: IRequest): Promise<User> {
 		const user = await this.usersRepository.findById(userId);
