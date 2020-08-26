@@ -6,10 +6,12 @@ interface IMailConfig {
 	};
 }
 
-export default {
+const mailConfig = {
 	driver: process.env.APP_MAIL_DRIVER || 'ethereal',
 	defaults: {
 		from: 'miguel@rios.com',
 		name: 'Miguel Rios falando',
 	},
 } as IMailConfig;
+
+export default mailConfig;
