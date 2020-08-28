@@ -9,5 +9,6 @@ declare namespace NodeJS {
 		AWS_DEFAULT_REGION: string;
 		MAIL_DRIVER: 'ethereal' | 'ses';
 		STORAGE_DRIVER: 'disk' | 's3';
+		CACHE_DRIVER: 'redis';
 	}
 }
